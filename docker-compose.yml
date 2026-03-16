@@ -23,8 +23,7 @@ services:
       start_period: 60s
 
   flask-app:
-    build: .                                            # <-- Ye dalo
-    image: my-app:latest
+    image: abhinaypandey/two-tier-flask-app:latest
     container_name: flask-app
     ports:
       - "5000:5000"
