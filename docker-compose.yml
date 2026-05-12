@@ -11,7 +11,7 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
       - ./message.sql:/docker-entrypoint-initdb.d/message.sql  
     networks:
       - twotier
@@ -23,7 +23,7 @@ services:
       start_period: 60s
 
   flask-app:
-    image: abhinaypandey/two-tier-flask-app:latest
+    build: .
     container_name: flask-app
     ports:
       - "5000:5000"
@@ -46,3 +46,5 @@ services:
 
 networks:
   twotier:
+volumes:
+  mysql:
